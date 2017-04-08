@@ -5,7 +5,7 @@
 
 QString temp = "hue", a = "";
 QMap<QString, int> test = {{temp, 1}, {temp, 2}};
-int i;
+int i, test2 = 100, test3 = 1000;
 
 Overview::Overview(QWidget *parent) :
     QMainWindow(parent),
@@ -23,6 +23,15 @@ Overview::Overview(QWidget *parent) :
     model->setHorizontalHeaderItem(0, new QStandardItem(QString("Column1 Header")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("Column2 Header")));
     model->setHorizontalHeaderItem(2, new QStandardItem(QString("Column3 Header")));
+
+    QStandardItem *firstRow = new QStandardItem(QString("String Value"));
+    model->setItem(0, 0, firstRow);
+    QStandardItem *secondRow = new QStandardItem(QString::number(test2));
+    //QString printable = QString::fromLatin1("My magic number is %1. That's all!").arg(test2);
+    //QStandardItem *secondRow = new QStandardItem(printable);
+    QStandardItem *thirdRow = new QStandardItem(QString::fromLatin1("Number is %1").arg(test3));
+    model->setItem(1, 0, secondRow);
+    model->setItem(2, 0, thirdRow);
 
     ui->tableView->setModel(model);
 }
