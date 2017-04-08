@@ -22,6 +22,7 @@ private slots:
     void refresh_pressed();
 
     void on_pushButton_3_pressed();
+    void on_pushButton_2_pressed();
 };
 
 #endif // OVERVIEW_H
