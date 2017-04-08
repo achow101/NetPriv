@@ -42,7 +42,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -51,6 +51,9 @@
        </size>
       </property>
       <widget class="QWidget" name="tab">
+       <property name="focusPolicy">
+        <enum>Qt::TabFocus</enum>
+       </property>
        <attribute name="title">
         <string>Overview</string>
        </attribute>
@@ -89,6 +92,9 @@
        </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
        <attribute name="title">
         <string>Visualization</string>
        </attribute>
@@ -103,7 +109,7 @@
      <x>0</x>
      <y>0</y>
      <width>1366</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
