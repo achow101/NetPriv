@@ -32,17 +32,18 @@ int pcap_thread()
         pcap_addr_t *a;
 
         /* IP addresses */
-        char *filter_expression = (char *)malloc(sizeof(char*));
+        QString filter_expression;
         for(a=d->addresses;a;a=a->next) {
             if (a->addr)
-                strcat(filter_expression, "ip.src == ");
-                strcat(filter_expression, iptos(((struct sockaddr_in *)a->addr)->sin_addr.s_addr));
-                strcat(filter_expression, " || ");
+            {
+                filter_expression.append("ip.src == ");
+                filter_expression.append(iptos(((struct sockaddr_in *)a->addr)->sin_addr.s_addr));
+                filter_expression.append(" || ");
+            }
         }
         struct bpf_program fcode;
-        pcap_compile(dev, &fcode, filter_expression, 1, 0);
+        pcap_compile(dev, &fcode, filter_expression.toStdString().c_str(), 1, 0);
         pcap_setfilter(dev, &fcode);
-        free(filter_expression);
 
         QtConcurrent::run(capture_thread, dev);
     }
@@ -76,6 +77,7 @@ void capture_thread(pcap_t *fp)
         // Obtain lock and add one
         QMutexLocker locker(&lock);
         hostnames_map[ip_addr_str]++;
+        qDebug() << ip_addr_str << QString::number(hostnames_map[ip_addr_str]);
         locker.~QMutexLocker();
     }
 }
