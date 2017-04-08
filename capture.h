@@ -32,4 +32,9 @@ int pcap_thread();
 void capture_thread(pcap_t *fp);
 void stop_threads();
 
+// Stuff to get data from map
+QMap<QString, int> get_hostnames_list();
+
+char *iptos(u_long in);
+
 #endif // CAPTURE_H

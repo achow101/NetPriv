@@ -1,6 +1,5 @@
 #include <QApplication>
 #include <QtConcurrent/QtConcurrent>
-#include <string.h>
 
 #include "overview.h"
 #include "main.h"

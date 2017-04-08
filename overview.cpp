@@ -2,8 +2,9 @@
 #include "ui_overview.h"
 #include "capture.h"
 #include <QStandardItemModel>
+#include <QThread>
 
-QString temp = "hue", a = "";
+QString temp = "hue", a = "first";
 QMap<QString, int> test = {{temp, 1}, {temp, 2}};
 int i, test2 = 100, test3 = 1000;
 
@@ -12,10 +13,12 @@ Overview::Overview(QWidget *parent) :
     ui(new Ui::Overview)
 {
     ui->setupUi(this);
-    for (i = 0; i < test.size(); i++) {
-        a += test.firstKey();
-        test.remove(test.firstKey());
-    }
+    connect(ui->pushButton, SIGNAL(released()), this, SLOT(refresh_pressed()));
+//    while (test.size() > 0) {
+//        a += test.firstKey();
+
+//        test.remove(test.firstKey());
+//    }
     ui->label->setText(a);
 
     QStandardItemModel *model = new QStandardItemModel(2, 3, this);
@@ -34,10 +37,16 @@ Overview::Overview(QWidget *parent) :
     model->setItem(2, 0, thirdRow);
 
     ui->tableView->setModel(model);
+    a = "second";
 }
 
 Overview::~Overview()
 {
     stop_threads();
     delete ui;
+}
+
+void Overview::refresh_pressed()
+{
+    ui->label->setText(a);
 }
