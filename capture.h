@@ -28,12 +28,21 @@ typedef struct ip_header{
     unsigned int   op_pad;         // Option + Padding
 }ip_header;
 
+/* UDP header*/
+typedef struct udp_header{
+    u_short sport;          // Source port
+    u_short dport;          // Destination port
+    u_short len;            // Datagram length
+    u_short crc;            // Checksum
+}udp_header;
+
 int pcap_thread();
 void capture_thread(pcap_t *fp);
 void stop_threads();
 
-// Stuff to get data from map
+// Stuff to get data from maps
 QMap<QString, int> get_hostnames_list();
+QMap<QString, int> get_programs_map();
 
 char *iptos(u_long in);
 

@@ -43,3 +43,9 @@ DEPENDPATH += $$PWD/Winpcap/Include
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/Winpcap/Lib/x64/wpcap.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/Winpcap/Lib/x64/libwpcap.a
+
+win32: LIBS += -lWS2_32
+
+win32: LIBS += -liphlpapi
+
+win32: LIBS += -lkernel32
