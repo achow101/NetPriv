@@ -19,9 +19,7 @@ private:
     Ui::Overview *ui;
 
 private slots:
-    void refresh_pressed();
-
-    void on_pushButton_3_pressed();
+    void auto_update_traffic();
 };
 
 #endif // OVERVIEW_H

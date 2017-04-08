@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include <QThread>
 #include <QDebug>
+#include <QTimer>
 
 QString temp = "hue", a = "";
 QMap<QString, int> test;
@@ -13,10 +14,14 @@ Overview::Overview(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Overview)
 {
-    test = get_hostnames_list();
+    //auto update
+    QTimer *update_timer = new QTimer(this);
+    update_timer->start(500);
+    connect(update_timer, SIGNAL(timeout()), SLOT(auto_update_traffic()));
+
+
+    //Abel's mess below
     ui->setupUi(this);
-    connect(ui->pushButton, SIGNAL(released()), this, SLOT(refresh_pressed()));
-    ui->label->setText(a);
 
     QStandardItemModel *model = new QStandardItemModel(1, 2, this);
 
@@ -43,16 +48,7 @@ Overview::~Overview()
     delete ui;
 }
 
-void Overview::refresh_pressed()
-{
-    test = get_hostnames_list();
-    for (QString h : test.keys()) {
-        a += h + "\n";
-    }
-    ui->label->setText(a);
-}
-
-void Overview::on_pushButton_3_pressed()
+void Overview::auto_update_traffic()
 {
     QStandardItemModel *model = new QStandardItemModel(2, 3, this);
 
