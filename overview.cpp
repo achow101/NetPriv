@@ -3,22 +3,19 @@
 #include "capture.h"
 #include <QStandardItemModel>
 #include <QThread>
+#include <QDebug>
 
-QString temp = "hue", a = "first";
-QMap<QString, int> test = {{temp, 1}, {temp, 2}};
+QString temp = "hue", a = "";
+QMap<QString, int> test;
 int i, test2 = 100, test3 = 1000;
 
 Overview::Overview(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Overview)
 {
+    test = get_hostnames_list();
     ui->setupUi(this);
     connect(ui->pushButton, SIGNAL(released()), this, SLOT(refresh_pressed()));
-//    while (test.size() > 0) {
-//        a += test.firstKey();
-
-//        test.remove(test.firstKey());
-//    }
     ui->label->setText(a);
 
     QStandardItemModel *model = new QStandardItemModel(2, 3, this);
@@ -37,7 +34,6 @@ Overview::Overview(QWidget *parent) :
     model->setItem(2, 0, thirdRow);
 
     ui->tableView->setModel(model);
-    a = "second";
 }
 
 Overview::~Overview()
@@ -48,5 +44,9 @@ Overview::~Overview()
 
 void Overview::refresh_pressed()
 {
+    test = get_hostnames_list();
+    for (QString h : test.keys()) {
+        a += h + "\n";
+    }
     ui->label->setText(a);
 }
