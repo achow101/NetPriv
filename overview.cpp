@@ -70,21 +70,19 @@ void Overview::auto_update_traffic()
     }
     row_index = 0;
     ui->tableView->setModel(model);
-}
 
-void Overview::on_pushButton_2_pressed()
-{
-    QStandardItemModel *model = new QStandardItemModel(1, 2, this);
+    //second one
+    QStandardItemModel *model2 = new QStandardItemModel(1, 2, this);
 
-    model->setHorizontalHeaderItem(0, new QStandardItem(QString("Program Name")));
-    model->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
+    model2->setHorizontalHeaderItem(0, new QStandardItem(QString("Program Name")));
+    model2->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
     programs = get_programs_map();
     for (QString program_name: programs.keys()) {
-            model->setVerticalHeaderItem(row_index, new QStandardItem(QString::number(row_index + 1)));
-            model->setItem(row_index, 0, new QStandardItem(program_name));
-            model->setItem(row_index, 1, new QStandardItem(QString::number(programs.value(program_name))));
+            model2->setVerticalHeaderItem(row_index, new QStandardItem(QString::number(row_index + 1)));
+            model2->setItem(row_index, 0, new QStandardItem(program_name));
+            model2->setItem(row_index, 1, new QStandardItem(QString::number(programs.value(program_name))));
             row_index++;
     }
     row_index = 0;
-    ui->tableView_2->setModel(model);
+    ui->tableView_2->setModel(model2);
 }
