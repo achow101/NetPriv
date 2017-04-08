@@ -1,5 +1,8 @@
 #include "overview.h"
 #include "ui_overview.h"
+#include "main.h"
+
+QMap<QString, int> test;
 
 Overview::Overview(QWidget *parent) :
     QMainWindow(parent),
