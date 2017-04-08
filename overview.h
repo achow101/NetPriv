@@ -20,6 +20,7 @@ private:
 
 private slots:
     void auto_update_traffic();
+    void on_pushButton_3_pressed();
 };
 
 #endif // OVERVIEW_H

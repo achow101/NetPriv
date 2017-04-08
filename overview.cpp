@@ -8,6 +8,7 @@
 
 QString temp = "hue", a = "";
 QMap<QString, int> test;
+QMap<QString, int> programs;
 int i, test2 = 100, test3 = 1000, row_index = 0;
 
 Overview::Overview(QWidget *parent) :
@@ -27,6 +28,11 @@ Overview::Overview(QWidget *parent) :
 
     model->setHorizontalHeaderItem(0, new QStandardItem(QString("IP Address")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
+
+    QStandardItemModel *model2 = new QStandardItemModel(1, 2, this);
+
+    model2->setHorizontalHeaderItem(0, new QStandardItem(QString("Program Name")));
+    model2->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
     //model->setHorizontalHeaderItem(2, new QStandardItem(QString("Column3 Header")));
 
     /*
@@ -40,6 +46,7 @@ Overview::Overview(QWidget *parent) :
     model->setItem(2, 0, thirdRow);
     */
     ui->tableView->setModel(model);
+    ui->tableView_2->setModel(model2);
 }
 
 Overview::~Overview()
@@ -50,11 +57,10 @@ Overview::~Overview()
 
 void Overview::auto_update_traffic()
 {
-    QStandardItemModel *model = new QStandardItemModel(2, 3, this);
+    QStandardItemModel *model = new QStandardItemModel(1, 2, this);
 
-    model->setHorizontalHeaderItem(0, new QStandardItem(QString("IP Adress")));
+    model->setHorizontalHeaderItem(0, new QStandardItem(QString("IP Address")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
-    //model->setHorizontalHeaderItem(2, new QStandardItem(QString("Column3 Header")));
     test = get_hostnames_list();
     for (QString ip: test.keys()) {
             model->setVerticalHeaderItem(row_index, new QStandardItem(QString::number(row_index + 1)));
@@ -64,4 +70,21 @@ void Overview::auto_update_traffic()
     }
     row_index = 0;
     ui->tableView->setModel(model);
+}
+
+void Overview::on_pushButton_2_pressed()
+{
+    QStandardItemModel *model = new QStandardItemModel(1, 2, this);
+
+    model->setHorizontalHeaderItem(0, new QStandardItem(QString("Program Name")));
+    model->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
+    programs = get_programs_map();
+    for (QString program_name: programs.keys()) {
+            model->setVerticalHeaderItem(row_index, new QStandardItem(QString::number(row_index + 1)));
+            model->setItem(row_index, 0, new QStandardItem(program_name));
+            model->setItem(row_index, 1, new QStandardItem(QString::number(programs.value(program_name))));
+            row_index++;
+    }
+    row_index = 0;
+    ui->tableView_2->setModel(model);
 }
