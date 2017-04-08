@@ -17,6 +17,10 @@ public:
 
 private:
     Ui::Overview *ui;
+
+private slots:
+    void refresh_pressed();
+
 };
 
 #endif // OVERVIEW_H
