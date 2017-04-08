@@ -5,8 +5,6 @@
 #include "overview.h"
 #include "main.h"
 
-//test
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -49,7 +47,7 @@ void capture_thread(pcap_t *fp)
 {
     int res;
     struct pcap_pkthdr *header;
-    const u_char *pkt_data;
+    const unsigned char *pkt_data;
 
     // Read the packets
     while((res = pcap_next_ex( fp, &header, &pkt_data)) >= 0)

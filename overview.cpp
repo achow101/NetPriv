@@ -1,6 +1,5 @@
 #include "overview.h"
 #include "ui_overview.h"
-#include "main.h"
 
 QString temp = "hue", a = "";
 QMap<QString, int> test = {{temp, 1}, {temp, 2}};
