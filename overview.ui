@@ -48,6 +48,19 @@
        <attribute name="title">
         <string>Overview</string>
        </attribute>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>47</width>
+          <height>14</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -74,7 +87,7 @@
      <x>0</x>
      <y>0</y>
      <width>1366</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
