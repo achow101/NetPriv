@@ -3,31 +3,32 @@
 
 #include <QMap>
 #include <QMutex>
+#include <pcap.h>
 
 QMutex lock;
 QMap<QString, int> hostnames_map;
 
 /* 4 bytes IP address */
 typedef struct ip_address{
-    u_char byte1;
-    u_char byte2;
-    u_char byte3;
-    u_char byte4;
+    unsigned char byte1;
+    unsigned char byte2;
+    unsigned char byte3;
+    unsigned char byte4;
 }ip_address;
 
 /* IPv4 header */
 typedef struct ip_header{
-    u_char  ver_ihl;        // Version (4 bits) + Internet header length (4 bits)
-    u_char  tos;            // Type of service
-    u_short tlen;           // Total length
-    u_short identification; // Identification
-    u_short flags_fo;       // Flags (3 bits) + Fragment offset (13 bits)
-    u_char  ttl;            // Time to live
-    u_char  proto;          // Protocol
-    u_short crc;            // Header checksum
+    unsigned char  ver_ihl;        // Version (4 bits) + Internet header length (4 bits)
+    unsigned char  tos;            // Type of service
+    unsigned short tlen;           // Total length
+    unsigned short identification; // Identification
+    unsigned short flags_fo;       // Flags (3 bits) + Fragment offset (13 bits)
+    unsigned char  ttl;            // Time to live
+    unsigned char  proto;          // Protocol
+    unsigned short crc;            // Header checksum
     ip_address  saddr;      // Source address
     ip_address  daddr;      // Destination address
-    u_int   op_pad;         // Option + Padding
+    unsigned int   op_pad;         // Option + Padding
 }ip_header;
 
 int pcap_thread();

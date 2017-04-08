@@ -1,5 +1,4 @@
 #include <QApplication>
-#include <pcap.h>
 #include <QtConcurrent/QtConcurrent>
 #include <string.h>
 
@@ -26,7 +25,7 @@ int pcap_thread()
     char errbuf[PCAP_ERRBUF_SIZE];
 
     // Get all devices
-    if (pcap_findalldevs_ex(PCAP_SRC_IF_STRING, NULL, &alldevs, errbuf) == -1)
+    if (pcap_findalldevs_ex((char *)PCAP_SRC_IF_STRING, NULL, &alldevs, errbuf) == -1)
     {
         fprintf(stderr,"Error in pcap_findalldevs_ex: %s\n", errbuf);
         return -1;
