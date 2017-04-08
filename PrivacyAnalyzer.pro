@@ -27,10 +27,12 @@ DEFINES += HAVE_REMOTE
 
 SOURCES +=\
         overview.cpp \
-    main.cpp
+    main.cpp \
+    capture.cpp
 
 HEADERS  += overview.h \
-    main.h
+    main.h \
+    capture.h
 
 FORMS    += overview.ui
 

@@ -1,5 +1,6 @@
 #include "overview.h"
 #include "ui_overview.h"
+#include "capture.h"
 
 QString temp = "hue", a = "";
 QMap<QString, int> test = {{temp, 1}, {temp, 2}};
@@ -19,5 +20,6 @@ Overview::Overview(QWidget *parent) :
 
 Overview::~Overview()
 {
+    stop_threads();
     delete ui;
 }
