@@ -3,7 +3,7 @@
 
 QMutex lock;
 QMap<QString, int> hostnames_map;
-boolean exit_threads = false;
+bool exit_threads = false;
 
 int pcap_thread()
 {
