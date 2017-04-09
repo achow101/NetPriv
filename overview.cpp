@@ -1,10 +1,16 @@
 #include "overview.h"
 #include "ui_overview.h"
 #include "capture.h"
-#include <QStandardItemModel>`
+#include <QStandardItemModel>
 #include <QThread>
 #include <QDebug>
 #include <QTimer>
+#include "chart.h"
+#include <QtCharts/QChartView>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+
+QT_CHARTS_USE_NAMESPACE
 
 QMap<QString, int> hostname_data;
 QMap<QString, int> prog_data;
@@ -109,9 +115,4 @@ void Overview::auto_update_traffic()
 void Overview::on_actionQuit_triggered()
 {
     QApplication::quit();
-}
-
-void Overview::on_actionAbout_triggered()
-{
-
 }

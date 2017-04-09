@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,12 +27,14 @@ DEFINES += HAVE_REMOTE
 
 
 SOURCES +=\
-        overview.cpp \
+    overview.cpp \
+    chart.cpp \
     main.cpp \
     capture.cpp
 
 HEADERS  += overview.h \
     main.h \
+    chart.h \
     capture.h
 
 FORMS    += overview.ui
@@ -49,3 +52,6 @@ win32: LIBS += -lWS2_32
 win32: LIBS += -liphlpapi
 
 win32: LIBS += -lkernel32
+
+target.path = $$[QT_INSTALL_EXAMPLES]/charts/dynamicspline
+INSTALLS += target

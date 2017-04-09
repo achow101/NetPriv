@@ -22,7 +22,6 @@ private:
 private slots:
     void auto_update_traffic();
     void on_actionQuit_triggered();
-    void on_actionAbout_triggered();
 };
 
 void copyTop10(QStandardItemModel* from, QStandardItemModel* to);
