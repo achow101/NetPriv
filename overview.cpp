@@ -14,6 +14,8 @@ QT_CHARTS_USE_NAMESPACE
 
 QMap<QString, int> hostname_data;
 QMap<QString, int> prog_data;
+int total_packets = 0;
+int last_packets = 0;
 
 Overview::Overview(QWidget *parent) :
     QMainWindow(parent),
@@ -38,6 +40,7 @@ Overview::~Overview()
 void Overview::auto_update_traffic()
 {
     int row_index = 0;
+    int total_packets = 0;
 
     // Traffic table
     QStandardItemModel *traffic_model = new QStandardItemModel(1, 2, this);
@@ -51,6 +54,7 @@ void Overview::auto_update_traffic()
             number_item->setData(QVariant(hostname_data.value(ip)), Qt::DisplayRole);
             traffic_model->setItem(row_index, 1, number_item);
             row_index++;
+            total_packets += hostname_data.value(ip);
     }
     row_index = 0;
     traffic_model->sort(1, Qt::DescendingOrder);
@@ -110,6 +114,15 @@ void Overview::auto_update_traffic()
     over_prog_model->setRowCount(10);
     ui->over_prog_tbl->setModel(over_prog_model);
     ui->over_prog_tbl->resizeColumnsToContents();
+
+    // Summary labels
+    ui->tot_packets_disp->setText(QString::number(total_packets));
+    ui->num_progs_disp->setText(QString::number(prog_data.keys().size()));
+    ui->num_ips_disp->setText(QString::number(hostname_data.keys().size()));
+
+    double rate = (total_packets - last_packets) / 0.5;
+    last_packets = total_packets;
+    ui->packets_second_disp->setText(QString::number(rate));
 }
 
 void Overview::on_actionQuit_triggered()

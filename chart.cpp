@@ -32,7 +32,7 @@ Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
     setAxisX(m_axis, m_series);
     m_axis->setTickCount(5);
     axisX()->setRange(0, 10);
-    axisY()->setRange(0, 10); // change this one
+    axisY()->setRange(0, 10000); // change this one
 
     m_timer.start();
 }

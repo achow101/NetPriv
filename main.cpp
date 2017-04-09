@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
     QChartView chartView(chart);
     chartView.setRenderHint(QPainter::Antialiasing);
     window.setCentralWidget(&chartView);
-    window.resize(400, 300);
+    window.resize(800, 600);
+    window.setWindowTitle("NetPriv Visual");
     window.show();
 
     w.show();
