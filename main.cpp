@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     QMainWindow window;
     Chart *chart = new Chart;
-    chart->setTitle("Dynamic spline chart");
+    chart->setTitle("Packets per second");
     chart->legend()->hide();
     chart->setAnimationOptions(QChart::AllAnimations);
     QChartView chartView(chart);

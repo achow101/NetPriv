@@ -6,6 +6,8 @@
 #include <QtCore/QTime>
 #include <QtCore/QDebug>
 
+int last_val = 0;
+
 Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
     QChart(QChart::ChartTypeCartesian, parent, wFlags),
     m_series(0),
@@ -51,9 +53,10 @@ void Chart::handleTimeout()
     qreal x = plotArea().width() / m_axis->tickCount();
     qreal y = (m_axis->max() - m_axis->min()) / m_axis->tickCount();
     m_x += y;
-    m_y = j/(m_x / 2);
+    m_y = j - last_val;
     m_series->append(m_x, m_y);
     scroll(x, 0);
+    last_val = j;
 //    if (m_x == 100)
 //        m_timer.stop();
 }
