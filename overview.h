@@ -2,6 +2,7 @@
 #define OVERVIEW_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
 
 namespace Ui {
 class Overview;
@@ -21,5 +22,7 @@ private:
 private slots:
     void auto_update_traffic();
 };
+
+void copyTop10(QStandardItemModel* from, QStandardItemModel* to);
 
 #endif // OVERVIEW_H

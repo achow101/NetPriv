@@ -29,12 +29,15 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Overview</string>
+   <string>Privacy Analyzer</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
       </property>
@@ -42,7 +45,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -50,19 +53,74 @@
         <height>16</height>
        </size>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="over_tb">
        <property name="focusPolicy">
         <enum>Qt::TabFocus</enum>
        </property>
        <attribute name="title">
         <string>Overview</string>
        </attribute>
+       <widget class="QTableView" name="over_traffic_tbl">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>371</width>
+          <height>411</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="traffic_recv_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Top 10 Traffic Receivers</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="prog_send_lbl">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>30</y>
+          <width>191</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Top 10 Programs Sending Data</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="over_prog_tbl">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>60</y>
+          <width>371</width>
+          <height>411</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="autoScroll">
+         <bool>false</bool>
+        </property>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="traffic_tb">
        <attribute name="title">
         <string>Traffic</string>
        </attribute>
-       <widget class="QTableView" name="tableView">
+       <widget class="QTableView" name="traffic_tbl">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -72,15 +130,15 @@
          </rect>
         </property>
         <property name="sortingEnabled">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="prog_tb">
        <attribute name="title">
         <string>Programs</string>
        </attribute>
-       <widget class="QTableView" name="tableView_2">
+       <widget class="QTableView" name="prog_tbl">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -91,7 +149,7 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="vis">
        <property name="contextMenuPolicy">
         <enum>Qt::DefaultContextMenu</enum>
        </property>
