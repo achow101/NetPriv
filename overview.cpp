@@ -25,31 +25,31 @@ Overview::Overview(QWidget *parent) :
     ui->tabWidget->setCurrentIndex(0);
 
 
-    //Abel's mess below
+//    //Abel's mess below
 
-    QStandardItemModel *model = new QStandardItemModel(1, 2, this);
+//    QStandardItemModel *model = new QStandardItemModel(1, 2, this);
 
-    model->setHorizontalHeaderItem(0, new QStandardItem(QString("IP Address")));
-    model->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
+//    model->setHorizontalHeaderItem(0, new QStandardItem(QString("IP Address")));
+//    model->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
 
-    QStandardItemModel *model2 = new QStandardItemModel(1, 2, this);
+//    QStandardItemModel *model2 = new QStandardItemModel(1, 2, this);
 
-    model2->setHorizontalHeaderItem(0, new QStandardItem(QString("Program Name")));
-    model2->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
-    //model->setHorizontalHeaderItem(2, new QStandardItem(QString("Column3 Header")));
+//    model2->setHorizontalHeaderItem(0, new QStandardItem(QString("Program Name")));
+//    model2->setHorizontalHeaderItem(1, new QStandardItem(QString("Number of Packets Sent")));
+//    //model->setHorizontalHeaderItem(2, new QStandardItem(QString("Column3 Header")));
 
-    /*
-    QStandardItem *firstRow = new QStandardItem(QString("String Value"));
-    model->setItem(0, 0, firstRow);
-    QStandardItem *secondRow = new QStandardItem(QString::number(test2));
-    //QString printable = QString::fromLatin1("My magic number is %1. That's all!").arg(test2);
-    //QStandardItem *secondRow = new QStandardItem(printable);
-    QStandardItem *thirdRow = new QStandardItem(QString::fromLatin1("Number is %1").arg(test3));
-    model->setItem(1, 0, secondRow);
-    model->setItem(2, 0, thirdRow);
-    */
-    ui->traffic_tbl->setModel(model);
-    ui->prog_tbl->setModel(model2);
+//    /*
+//    QStandardItem *firstRow = new QStandardItem(QString("String Value"));
+//    model->setItem(0, 0, firstRow);
+//    QStandardItem *secondRow = new QStandardItem(QString::number(test2));
+//    //QString printable = QString::fromLatin1("My magic number is %1. That's all!").arg(test2);
+//    //QStandardItem *secondRow = new QStandardItem(printable);
+//    QStandardItem *thirdRow = new QStandardItem(QString::fromLatin1("Number is %1").arg(test3));
+//    model->setItem(1, 0, secondRow);
+//    model->setItem(2, 0, thirdRow);
+//    */
+//    ui->traffic_tbl->setModel(model);
+//    ui->prog_tbl->setModel(model2);
 }
 
 Overview::~Overview()
@@ -133,4 +133,14 @@ void Overview::auto_update_traffic()
     over_prog_model->setRowCount(10);
     ui->over_prog_tbl->setModel(over_prog_model);
     ui->over_prog_tbl->resizeColumnsToContents();
+}
+
+void Overview::on_actionQuit_triggered()
+{
+    QApplication::quit();
+}
+
+void Overview::on_actionAbout_triggered()
+{
+
 }
